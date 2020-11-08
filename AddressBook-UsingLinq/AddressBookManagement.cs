@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace AddressBookLinq
@@ -33,23 +34,10 @@ namespace AddressBookLinq
             table.Columns.Add("PhoneNumber", typeof(string));
             table.Columns.Add("EmailId", typeof(string));
             ///adding rows
-            table.Rows.Add("Kretika", "Arora", "Street1", "Faridabad", "Haryana", 121001, "9650925666", "kretikaarora@gmail.com");
-            table.Rows.Add("katrina", "kres", "Street2", "Mumbai", "Maharashtra", 878001, "890925666", "katrinakres@gmail.com");
-            table.Rows.Add("kajal", "klei", "Street3", "hyderabad", "Telangana", 841001, "7412925666", "kajalklei@gmail.com");
-            table.Rows.Add("Kim", "Kadash", "Street4", "Paris", "France", 7894551, "4569925666", "kimkadash@gmail.com");
-        }
-
-        /// <summary>
-        /// Displaying Data Table
-        /// Uc1
-        /// </summary>
-        public static void DisplayDataTable()
-        {
-            var records = table.AsEnumerable();
-            foreach (var row in records)
-            {
-                Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<int>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID"));
-            }
+            table.Rows.Add("Kretika", "Arora", "Street1", "Faridabad", "Haryana", "121001", "9650925666", "kretikaarora@gmail.com");
+            table.Rows.Add("katrina", "kres", "Street2", "Mumbai", "Maharashtra", "878001", "890925666", "katrinakres@gmail.com");
+            table.Rows.Add("kajal", "klei", "Street3", "hyderabad", "Telangana", "841001", "7412925666", "kajalklei@gmail.com");
+            table.Rows.Add("Kim", "Kadash", "Street4", "Paris", "France", "7894551", "4569925666", "kimkadash@gmail.com");
         }
 
         /// <summary>
@@ -68,6 +56,31 @@ namespace AddressBookLinq
             dr[6] = "87764478986";
             dr[7] = "komalsharma@gmail.com";
             table.Rows.Add(dr);
-        }       
+        }
+
+
+        /// <summary>
+        /// Displaying Data Table
+        /// UC3
+        /// </summary>
+        public static void DisplayDataTable()
+        {
+            var records = table.AsEnumerable();
+            foreach (var row in records)
+            {
+                Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<string>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID"));
+                Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        /// Editing exiting Contact Details
+        /// UC4
+        /// </summary>
+        public static void EditExistingContactDetail()
+        {
+            var record = table.AsEnumerable().Where(a => a.Field<string>("FirstName").Equals("katrina")).FirstOrDefault();
+            record["state"] = "Mahar.";
+        }
     }
 }
