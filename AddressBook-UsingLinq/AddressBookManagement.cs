@@ -79,8 +79,18 @@ namespace AddressBookLinq
         /// </summary>
         public static void EditExistingContactDetail()
         {
-            var record = table.AsEnumerable().Where(a => a.Field<string>("FirstName").Equals("katrina")).FirstOrDefault();
+            var record = table.AsEnumerable().Where(a => a.Field<string>("FirstName").Equals("katrina")).FirstOrDefault();      
             record["state"] = "Mahar.";
+        }
+
+        /// <summary>
+        /// Delete Person Contact Using Name
+        /// UC5
+        /// </summary>
+        public static void DeletePersonContactUsingName()
+        {
+            var record = table.AsEnumerable().Where(a => a.Field<string>("FirstName").Equals("katrina")).FirstOrDefault();
+            record.Delete();
         }
     }
 }

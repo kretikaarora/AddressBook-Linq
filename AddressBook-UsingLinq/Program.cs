@@ -16,8 +16,13 @@ namespace AddressBookLinq
             Console.WriteLine("Before Editing");
             AddressBookManagement.CreateDataTable();
             AddressBookManagement.DisplayDataTable();
+            Console.WriteLine("************************************************************");
             AddressBookManagement.EditExistingContactDetail();
             Console.WriteLine("After Editing");
+            AddressBookManagement.DisplayDataTable();
+            Console.WriteLine("************************************************************");
+            AddressBookManagement.DeletePersonContactUsingName();
+            Console.WriteLine("After Deleting");
             AddressBookManagement.DisplayDataTable();
            
         }
