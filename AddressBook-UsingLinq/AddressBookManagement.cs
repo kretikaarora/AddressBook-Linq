@@ -33,12 +33,14 @@ namespace AddressBookLinq
             table.Columns.Add("Zip", typeof(string));
             table.Columns.Add("PhoneNumber", typeof(string));
             table.Columns.Add("EmailId", typeof(string));
+            table.Columns.Add("AddressBookName", typeof(string));
+            table.Columns.Add("AddressBooktype", typeof(string));
             ///adding rows
-            table.Rows.Add("Kretika", "Arora", "Street1", "Faridabad", "Haryana", "121001", "9650925666", "kretikaarora@gmail.com");
-            table.Rows.Add("alisha", "kres", "Street2", "Mumbai", "Maharashtra", "878001", "890925666", "katrinakres@gmail.com");
-            table.Rows.Add("Priya", "klei", "Street3", "Mumbai", "Maharashtra", "841001", "7412925666", "kajalklei@gmail.com");
-            table.Rows.Add("Malviya", "Kadash", "Street4", "Faridabad", "Haryna", "7894551", "4569925666", "ash@gmail.com");
-            table.Rows.Add("lary", "Kadash", "Street5", "Paris", "France", "7894551", "9925666", "adash@gmail.com");
+            table.Rows.Add("Kretika", "Arora", "Street1", "Faridabad", "Haryana", "121001", "9650925666", "kretikaarora@gmail.com","A","Friends");
+            table.Rows.Add("alisha", "kres", "Street2", "Mumbai", "Maharashtra", "878001", "890925666", "katrinakres@gmail.com","B","Family");
+            table.Rows.Add("Priya", "klei", "Street3", "Mumbai", "Maharashtra", "841001", "7412925666", "kajalklei@gmail.com","C","Proffesional");
+            table.Rows.Add("Malviya", "Kadash", "Street4", "Faridabad", "Haryna", "7894551", "4569925666", "ash@gmail.com","D","Family");
+            table.Rows.Add("lary", "Kadash", "Street5", "Paris", "France", "7894551", "9925666", "adash@gmail.com","E","Friends");
         }
 
         /// <summary>
@@ -69,7 +71,7 @@ namespace AddressBookLinq
             var records = table.AsEnumerable();
             foreach (var row in records)
             {
-                Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<string>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID"));
+                Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<string>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID")+"AddressBookName :"+ row.Field<string>("AddressBookName")+"  AddressBookType :"+ row.Field<string>("AddressBookType"));
                 Console.WriteLine();
             }
         }
