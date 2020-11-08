@@ -34,13 +34,13 @@ namespace AddressBookLinq
             table.Columns.Add("PhoneNumber", typeof(string));
             table.Columns.Add("EmailId", typeof(string));
             table.Columns.Add("AddressBookName", typeof(string));
-            table.Columns.Add("AddressBooktype", typeof(string));
+            table.Columns.Add("AddressBookType", typeof(string));
             ///adding rows
-            table.Rows.Add("Kretika", "Arora", "Street1", "Faridabad", "Haryana", "121001", "9650925666", "kretikaarora@gmail.com","A","Friends");
-            table.Rows.Add("alisha", "kres", "Street2", "Mumbai", "Maharashtra", "878001", "890925666", "katrinakres@gmail.com","B","Family");
-            table.Rows.Add("Priya", "klei", "Street3", "Mumbai", "Maharashtra", "841001", "7412925666", "kajalklei@gmail.com","C","Proffesional");
-            table.Rows.Add("Malviya", "Kadash", "Street4", "Faridabad", "Haryna", "7894551", "4569925666", "ash@gmail.com","D","Family");
-            table.Rows.Add("lary", "Kadash", "Street5", "Paris", "France", "7894551", "9925666", "adash@gmail.com","E","Friends");
+            table.Rows.Add("Kretika", "Arora", "Street1", "Faridabad", "Haryana", "121001", "9650925666", "kretikaarora@gmail.com","A1","Friends");
+            table.Rows.Add("alisha", "kres", "Street2", "Mumbai", "Maharashtra", "878001", "890925666", "katrinakres@gmail.com","B1","Family");
+            table.Rows.Add("Priya", "klei", "Street3", "Mumbai", "Maharashtra", "841001", "7412925666", "kajalklei@gmail.com","C1","Proffesional");
+            table.Rows.Add("Malviya", "Kadash", "Street4", "Faridabad", "Haryna", "7894551", "4569925666", "ash@gmail.com","D1","Family");
+            table.Rows.Add("lary", "Kadash", "Street5", "Paris", "France", "7894551", "9925666", "adash@gmail.com","E1","Friends");
         }
 
         /// <summary>
@@ -172,6 +172,19 @@ namespace AddressBookLinq
             {
                 Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<string>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID"));
                 Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        /// Count By AddressBook Type
+        /// UC10
+        /// </summary>
+        public static void CountByAddressBookType()
+        {
+            var records = table.AsEnumerable().GroupBy(a => a.Field<string>("AddressBookType")).Select(x => new{ type = x.Key, count = x.Count() });
+            foreach (var row in records)
+            {         
+                Console.WriteLine("Type : "+row.type + " Count :"+row.count);
             }
         }
     }
