@@ -113,12 +113,32 @@ namespace AddressBookLinq
         /// </summary>
         public static void RetrievingContactDetailsByState()
         {
-            var records = table.AsEnumerable().Where(a => a.Field<string>("state").Equals("Maharastra"));
+            var records = table.AsEnumerable().Where(a => a.Field<string>("state").Equals("Maharastra"));          
             foreach (var row in records)
             {
                 Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<string>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID"));
                 Console.WriteLine();
             }
+        }
+
+        /// <summary>
+        /// Count by City
+        /// UC7
+        /// </summary>
+        public static void CountByCity()
+        {
+            var records = table.AsEnumerable().Where(a => a.Field<string>("city").Equals("Faridabad"));
+            Console.WriteLine("The count for records by city is  : "+ records.Count());
+        }
+
+        /// <summary>
+        /// Count by City
+        /// UC7
+        /// </summary>
+        public static void CountByState()
+        {
+            var records = table.AsEnumerable().Where(a => a.Field<string>("state").Equals("Maharastra"));
+            Console.WriteLine("The count for records by state is  is : " + records.Count());
         }
     }
 }

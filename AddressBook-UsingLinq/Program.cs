@@ -15,20 +15,14 @@ namespace AddressBookLinq
             Console.WriteLine("Welcome to Address Book");
             //Console.WriteLine("Before Editing");
             AddressBookManagement.CreateDataTable();
-            AddressBookManagement.DisplayDataTable();
-            Console.WriteLine("************************************************************");
-            AddressBookManagement.EditExistingContactDetail();
-            Console.WriteLine("After Editing");
-            AddressBookManagement.DisplayDataTable();
-            Console.WriteLine("************************************************************");
-            AddressBookManagement.DeletePersonContactUsingName();
-            Console.WriteLine("After Deleting");
-            AddressBookManagement.DisplayDataTable();
-            Console.WriteLine("**************************************************************");
+            
             Console.WriteLine("Contacts by a city Faridabad");
             AddressBookManagement.RetrievingContactDetailsByCity();
+            AddressBookManagement.CountByCity();
+            Console.WriteLine();
             Console.WriteLine("Contacts by a state Maharastra");
             AddressBookManagement.RetrievingContactDetailsByState();
+            AddressBookManagement.CountByState();
             
 
         }
