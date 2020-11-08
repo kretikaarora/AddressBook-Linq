@@ -13,7 +13,11 @@ namespace AddressBookLinq
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book");
+            Console.WriteLine("Before Editing");
             AddressBookManagement.CreateDataTable();
+            AddressBookManagement.DisplayDataTable();
+            AddressBookManagement.EditExistingContactDetail();
+            Console.WriteLine("After Editing");
             AddressBookManagement.DisplayDataTable();
            
         }
