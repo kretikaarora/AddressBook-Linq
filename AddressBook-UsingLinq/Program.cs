@@ -15,10 +15,8 @@ namespace AddressBookLinq
             Console.WriteLine("Welcome to Address Book");
             AddressBookManagement.CreateDataTable();
             AddressBookManagement.DisplayDataTable();
-            //Console.WriteLine("*******************************************");
-            //AddressBookManagement.SortedContactsByNameForAgivenCity();
-            //Console.WriteLine("********************************************");
-            //AddressBookManagement.SortedContactsByNameForAgivenState();
+            AddressBookManagement.CountByAddressBookType();
+            
             
 
         }
