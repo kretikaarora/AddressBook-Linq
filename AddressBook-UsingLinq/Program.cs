@@ -13,7 +13,7 @@ namespace AddressBookLinq
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book");
-            Console.WriteLine("Before Editing");
+            //Console.WriteLine("Before Editing");
             AddressBookManagement.CreateDataTable();
             AddressBookManagement.DisplayDataTable();
             Console.WriteLine("************************************************************");
@@ -24,7 +24,13 @@ namespace AddressBookLinq
             AddressBookManagement.DeletePersonContactUsingName();
             Console.WriteLine("After Deleting");
             AddressBookManagement.DisplayDataTable();
-           
+            Console.WriteLine("**************************************************************");
+            Console.WriteLine("Contacts by a city Faridabad");
+            AddressBookManagement.RetrievingContactDetailsByCity();
+            Console.WriteLine("Contacts by a state Maharastra");
+            AddressBookManagement.RetrievingContactDetailsByState();
+            
+
         }
     }
 }
