@@ -35,9 +35,10 @@ namespace AddressBookLinq
             table.Columns.Add("EmailId", typeof(string));
             ///adding rows
             table.Rows.Add("Kretika", "Arora", "Street1", "Faridabad", "Haryana", "121001", "9650925666", "kretikaarora@gmail.com");
-            table.Rows.Add("katrina", "kres", "Street2", "Mumbai", "Maharashtra", "878001", "890925666", "katrinakres@gmail.com");
-            table.Rows.Add("kajal", "klei", "Street3", "Mumbai", "Maharastra", "841001", "7412925666", "kajalklei@gmail.com");
-            table.Rows.Add("Kim", "Kadash", "Street4", "Paris", "France", "7894551", "4569925666", "kimkadash@gmail.com");
+            table.Rows.Add("alisha", "kres", "Street2", "Mumbai", "Maharashtra", "878001", "890925666", "katrinakres@gmail.com");
+            table.Rows.Add("Priya", "klei", "Street3", "Mumbai", "Maharashtra", "841001", "7412925666", "kajalklei@gmail.com");
+            table.Rows.Add("Malviya", "Kadash", "Street4", "Faridabad", "Haryna", "7894551", "4569925666", "ash@gmail.com");
+            table.Rows.Add("lary", "Kadash", "Street5", "Paris", "France", "7894551", "9925666", "adash@gmail.com");
         }
 
         /// <summary>
@@ -113,7 +114,8 @@ namespace AddressBookLinq
         /// </summary>
         public static void RetrievingContactDetailsByState()
         {
-            var records = table.AsEnumerable().Where(a => a.Field<string>("state").Equals("Maharastra"));          
+            var records = table.AsEnumerable().Where(a => a.Field<string>("state")== "Maharashtra");
+            var recordData = table.AsEnumerable().Where(r => r.Field<string>("city") == "Mumbai").OrderBy(r => r.Field<string>("firstName")).ThenBy(r => r.Field<string>("lastName"));
             foreach (var row in records)
             {
                 Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<string>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID"));
@@ -139,6 +141,36 @@ namespace AddressBookLinq
         {
             var records = table.AsEnumerable().Where(a => a.Field<string>("state").Equals("Maharastra"));
             Console.WriteLine("The count for records by state is  is : " + records.Count());
+        }
+
+        /// <summary>
+        /// Sorted Contacts By Name For A given City
+        /// UC8
+        /// </summary>      
+        public static void SortedContactsByNameForAgivenCity()
+        {
+            Console.WriteLine("Sorting by name for a Mumbai City");
+            var records = table.AsEnumerable().Where(r => r.Field<string>("city") == "Mumbai").OrderBy(r => r.Field<string>("firstName")).ThenBy(r => r.Field<string>("lastName"));
+            foreach (var row in records)
+            {
+                Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<string>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID"));
+                Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        /// Sorted Contacts By Name For A given State
+        /// UC8
+        /// </summary>
+        public static void SortedContactsByNameForAgivenState()
+        {
+            Console.WriteLine("Sorting by name for a Maharastra state");
+            var records = table.AsEnumerable().Where(r => r.Field<string>("state") == "Maharashtra").OrderBy(r => r.Field<string>("firstName")).ThenBy(r => r.Field<string>("lastName"));
+            foreach (var row in records)
+            {
+                Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<string>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID"));
+                Console.WriteLine();
+            }
         }
     }
 }

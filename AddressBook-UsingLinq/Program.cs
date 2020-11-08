@@ -13,16 +13,12 @@ namespace AddressBookLinq
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book");
-            //Console.WriteLine("Before Editing");
             AddressBookManagement.CreateDataTable();
-            
-            Console.WriteLine("Contacts by a city Faridabad");
-            AddressBookManagement.RetrievingContactDetailsByCity();
-            AddressBookManagement.CountByCity();
-            Console.WriteLine();
-            Console.WriteLine("Contacts by a state Maharastra");
-            AddressBookManagement.RetrievingContactDetailsByState();
-            AddressBookManagement.CountByState();
+            AddressBookManagement.DisplayDataTable();
+            Console.WriteLine("*******************************************");
+            AddressBookManagement.SortedContactsByNameForAgivenCity();
+            Console.WriteLine("********************************************");
+            AddressBookManagement.SortedContactsByNameForAgivenState();
             
 
         }
