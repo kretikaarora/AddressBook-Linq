@@ -36,7 +36,7 @@ namespace AddressBookLinq
             ///adding rows
             table.Rows.Add("Kretika", "Arora", "Street1", "Faridabad", "Haryana", "121001", "9650925666", "kretikaarora@gmail.com");
             table.Rows.Add("katrina", "kres", "Street2", "Mumbai", "Maharashtra", "878001", "890925666", "katrinakres@gmail.com");
-            table.Rows.Add("kajal", "klei", "Street3", "hyderabad", "Telangana", "841001", "7412925666", "kajalklei@gmail.com");
+            table.Rows.Add("kajal", "klei", "Street3", "Mumbai", "Maharastra", "841001", "7412925666", "kajalklei@gmail.com");
             table.Rows.Add("Kim", "Kadash", "Street4", "Paris", "France", "7894551", "4569925666", "kimkadash@gmail.com");
         }
 
@@ -91,6 +91,34 @@ namespace AddressBookLinq
         {
             var record = table.AsEnumerable().Where(a => a.Field<string>("FirstName").Equals("katrina")).FirstOrDefault();
             record.Delete();
+        }
+
+        /// <summary>
+        /// Retrieving Contact Details By City
+        /// UC6
+        /// </summary>
+        public static void RetrievingContactDetailsByCity()
+        {
+            var records = table.AsEnumerable().Where(a => a.Field<string>("city").Equals("Faridabad"));
+            foreach (var row in records)
+            {
+                Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<string>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID"));
+                Console.WriteLine();
+            }
+        }
+
+        /// <summary>
+        /// Retrieving Contact Details By State
+        /// UC6
+        /// </summary>
+        public static void RetrievingContactDetailsByState()
+        {
+            var records = table.AsEnumerable().Where(a => a.Field<string>("state").Equals("Maharastra"));
+            foreach (var row in records)
+            {
+                Console.WriteLine("FirstName: " + row.Field<string>("FirstName") + ", LastName: " + row.Field<string>("LastName") + ", Address: " + row.Field<string>("Address") + " , City: " + row.Field<string>("City") + " , State: " + row.Field<string>("State") + ", Zip: " + row.Field<string>("Zip") + " , PhoneNumber: " + row.Field<string>("PhoneNumber") + ", EmailID: " + row.Field<string>("EmailID"));
+                Console.WriteLine();
+            }
         }
     }
 }
